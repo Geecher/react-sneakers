@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Test React project 'React Sneakers'
+
+This project create for my study in FrontEnd-dev. good luck for me! :)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
