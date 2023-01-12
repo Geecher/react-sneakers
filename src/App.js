@@ -2,6 +2,12 @@
 function App() {
   return (
     <div className="wrapper clear">
+        <div className="overlay">
+            <div className="drawer">
+                <h2 className="mb-30">Корзина</h2>
+            </div>
+        </div>
+
         <header className="d-flex align-center justify-between p-40">
             <div className="headerLeft d-flex align-center">
                 <img width={40} height={40} src="/img/logo.png" alt=""/>
@@ -24,9 +30,18 @@ function App() {
             </ul>
         </header>
         <div className="content p-40">
-            <h1 className="mb-30">Все кроссовки</h1>
+            <div className="d-flex align-center justify-between mb-30">
+                <h1>Все кроссовки</h1>
+                <div className="search-block">
+                    <img className="mr-10" src="/img/search.svg" alt="Поиск"/>
+                    <input type="text" placeholder="Поиск..."/>
+                </div>
+            </div>
             <div className="row">
                 <div className="card">
+                    <div className="favourite">
+                        <img src="/img/heart-unliked.svg" alt="Unliked"/>
+                    </div>
                     <img width={133} height={112} src="/img/sneakers/001.jpg" alt="nike blazer"/>
                     <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
                     <div className="d-flex align-center justify-between">
