@@ -46,7 +46,7 @@ header {
 }
 
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -56,13 +56,19 @@ header {
 }
 
 .drawer {
-    position: absolute;
-    width: 385px;
+    position: fixed;
+    width: 420px;
     height: 100%;
     right: 0;
     background: #FFFFFF;
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+
+    .items {
+        flex: 1;
+    }
 
     h2 {
         margin: 0;
@@ -127,6 +133,90 @@ header {
             border: 1px solid #F8F8F8;
             box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
             transform: translate(0, -5px);
+        }
+    }
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border: 1px solid #F3F3F3;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    
+    p {margin: 0;}
+
+    .cartItemImg {
+        width: 70px;
+        height: 70px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 20px 0 0;
+    }
+
+    .removeBtn {
+        background: #FFFFFF;
+        border: 1px solid #F2F2F2;
+        border-radius: 8px;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        opacity: .5;
+        transition: all .3s;
+        flex: 0 0 32px;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.cartTotalBlock {
+    ul {
+        li {
+            display: flex;
+            align-items: flex-end;
+            margin: 0 0 20px;
+    
+            div {
+                position: relative;
+                top: -4px;
+                flex: 1;
+                height: 1px;
+                border-bottom: 1px dashed #dfdfdf;
+                margin: 0 7px;
+            }
+        }
+    }
+    button {
+        position: relative;
+        background: #9DD558;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 18px;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: all .3s;
+        &:hover {
+            background: #8ac542;
+            &::after {
+                right: 30px;
+            }
+        }
+        &::after {
+            content: url('../public/img/cartTotalArrow.svg');
+            position: absolute;
+            top: 33%;
+            right: 35px;
+            transition: all .3s;
         }
     }
 }
