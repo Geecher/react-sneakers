@@ -1,73 +1,14 @@
 
+import Header from './components/Header';
+import Drawer from './components/Drawer';
+import Card from './components/Card';
+
 function App() {
   return (
     <div className="wrapper clear">
-        <div className="overlay">
-            <div className="drawer">
-                <h2 className="mb-30">Корзина</h2>
-
-                <div className="items">
-                    <div className="cartItem mb-20">
-                        <div style={{ backgroundImage: 'url(/img/sneakers/001.jpg)' }} className="cartItemImg"></div>
-                        <div className="mr-20">
-                            <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-                            <b>12 999 руб.</b>
-                        </div>
-                        <button className="removeBtn">
-                            <img width={11} height={11} src="/img/btn-remove.svg" alt="Plus"/>
-                        </button>
-                    </div>
-                    <div className="cartItem mb-20">
-                        <div style={{ backgroundImage: 'url(/img/sneakers/001.jpg)' }} className="cartItemImg"></div>
-                        <div className="mr-20">
-                            <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-                            <b>12 999 руб.</b>
-                        </div>
-                        <button className="removeBtn">
-                            <img width={11} height={11} src="/img/btn-remove.svg" alt="Plus"/>
-                        </button>
-                    </div>
-                </div>
-
-                <div className="cartTotalBlock">
-                    <ul>
-                        <li>
-                            <span>Итого:</span>
-                            <div></div>
-                            <b>21 498 руб.</b>
-                        </li>
-                        <li>
-                            <span>Налог 5%: </span>
-                            <div></div>
-                            <b>1074 руб.</b>
-                        </li>
-                    </ul>
-                    <button>Оформить заказ</button>
-                </div>
-            </div>
-        </div>
-
-        <header className="d-flex align-center justify-between p-40">
-            <div className="headerLeft d-flex align-center">
-                <img width={40} height={40} src="/img/logo.png" alt=""/>
-                <div className="headerInfo">
-                    <h3 className="text-uppercase">REACT SNEAKERS</h3>
-                    <span className="opacity-5">Магазин лучших кроссовок</span>
-                </div>
-            </div>
-            <ul className="headerRight d-flex align-center">
-                <li>
-                    <img width={18} height={18} src="/img/cart.svg" alt=""/>
-                    <span>1205 руб.</span>    
-                </li>   
-                <li>
-                    <img width={21} height={20} src="/img/favorite.svg" alt=""/>                    
-                </li>   
-                <li>
-                    <img width={21} height={20} src="/img/account.svg" alt=""/>
-                </li>   
-            </ul>
-        </header>
+        <Drawer/>
+        <Header/>
+        
         <div className="content p-40">
             <div className="d-flex align-center justify-between mb-30">
                 <h1>Все кроссовки</h1>
@@ -77,6 +18,7 @@ function App() {
                 </div>
             </div>
             <div className="row">
+                <Card/>
                 <div className="card">
                     <div className="favourite">
                         <img src="/img/heart-unliked.svg" alt="Unliked"/>

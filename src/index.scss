@@ -68,9 +68,12 @@ header {
 
     .items {
         flex: 1;
+        overflow: auto;
     }
 
     h2 {
+        display: flex;
+        justify-content: space-between;
         margin: 0;
     }
 }
@@ -158,21 +161,21 @@ header {
         background-repeat: no-repeat;
         margin: 0 20px 0 0;
     }
+}
 
-    .removeBtn {
-        background: #FFFFFF;
-        border: 1px solid #F2F2F2;
-        border-radius: 8px;
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-        opacity: .5;
-        transition: all .3s;
-        flex: 0 0 32px;
+.removeBtn {
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    opacity: .5;
+    transition: all .3s;
+    flex: 0 0 32px;
 
-        &:hover {
-            opacity: 1;
-        }
+    &:hover {
+        opacity: 1;
     }
 }
 
