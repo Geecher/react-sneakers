@@ -1,4 +1,4 @@
-function Card() {
+function Card(props) {
   return (
     <div className="card">
       <div className="favourite">
@@ -7,14 +7,14 @@ function Card() {
       <img
         width={133}
         height={112}
-        src="/img/sneakers/001.jpg"
+        src={props.img}
         alt="nike blazer"
       />
-      <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+      <h5>{props.name}</h5>
       <div className="d-flex align-center justify-between">
         <div>
           <p className="card__price">Цена:</p>
-          <b className="card__num">12 999 руб.</b>
+          <b className="card__num">{props.price} руб.</b>
         </div>
         <button className="button">
           <img width={11} height={11} src="/img/plus.svg" alt="Plus" />
