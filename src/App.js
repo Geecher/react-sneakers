@@ -26,9 +26,8 @@ function App() {
                 </div>
             </div>
             <div className="row">
-                {/* <Card/> */}
-                {arr.map(obj => (
-                    <Card name={obj.name} price={obj.price} img={obj.img}/>
+                {arr.map(el => (
+                    <Card name={el.name} price={el.price} img={el.img}/>
                 ))}
             </div>
         </div>
