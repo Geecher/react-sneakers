@@ -100,46 +100,7 @@ header {
         gap: 30px;
     }
 
-    .card {
-        background: #FFFFFF;
-        border: 1px solid #F3F3F3;
-        border-radius: 40px;
-        padding: 20px 30px 30px;
-        max-width: 210px;
-        transition: all .2s;
-        .favourite {
-            position: absolute;
-            cursor: pointer;
-        }
-        h5 {
-            font-weight: 400;
-            margin-bottom: 15px;
-        }
-        p {
-            margin: 0;
-        }
-        .card__price {
-            text-transform: uppercase;
-            font-size: 11px;
-            color: #BDBDBD;
-        }
-        .card__num {
-            font-size: 14px;
-        }
-        .button {
-            background: #FFFFFF;
-            border: 1px solid #F2F2F2;
-            border-radius: 8px;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-        }
-        &:hover {
-            border: 1px solid #F8F8F8;
-            box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
-            transform: translate(0, -5px);
-        }
-    }
+    
 }
 
 .cartItem {

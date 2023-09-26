@@ -27,7 +27,7 @@ function App() {
             </div>
             <div className="row">
                 {arr.map(el => (
-                    <Card name={el.name} price={el.price} img={el.img}/>
+                    <Card name={el.name} price={el.price} img={el.img} addToCart={() => {console.log(el);}}/>
                 ))}
             </div>
         </div>
