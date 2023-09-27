@@ -9,10 +9,10 @@ function Header() {
                 </div>
             </div>
             <ul className="headerRight d-flex align-center">
-                <li>
+                <li className="cu-p">
                     <img width={18} height={18} src="/img/cart.svg" alt=""/>
                     <span>1205 руб.</span>    
-                </li>   
+                </li>
                 <li>
                     <img width={21} height={20} src="/img/favorite.svg" alt=""/>                    
                 </li>   
