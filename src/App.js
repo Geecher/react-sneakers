@@ -3,36 +3,29 @@ import Drawer from "./components/Drawer";
 import Card from "./components/Card";
 import React from "react";
 
-const arr = [
-  {
-    name: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: 12999,
-    img: "/img/sneakers/001.jpg",
-  },
-  {
-    name: "Мужские Кроссовки Nike Air Max 270",
-    price: 8499,
-    img: "/img/sneakers/002.jpg",
-  },
-  {
-    name: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: 8999,
-    img: "/img/sneakers/003.jpg",
-  },
-  {
-    name: "Кроссовки Puma X Aka Boku Future Rider",
-    price: 15000,
-    img: "/img/sneakers/004.jpg",
-  },
-];
-
 function App() {
-  // const [cartOpened, setCartOpened] = React.useEffect();
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [cartOpened, setCartOpened] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch('https://63b9cd7c56043ab3c78fa479.mockapi.io/items')
+      .then(res => {
+        return res.json();
+      })
+      .then(json => {
+        setItems(json);
+      });
+  }, [])
+
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj]);
+  };
 
   return (
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+      {cartOpened && <Drawer items={cartItems} closeCart={() => setCartOpened(false)} />}
+      <Header onClickCart={() => setCartOpened(true)}/>
 
       <div className="content p-40">
         <div className="d-flex align-center justify-between mb-30">
@@ -43,13 +36,13 @@ function App() {
           </div>
         </div>
         <div className="row">
-          {arr.map((el) => (
+          {items.map((item) => (
             <Card
-              name={el.name}
-              price={el.price}
-              img={el.img}
-              clickToCart={() => {
-                console.log("Элемент добавили в корзину");
+              name={item.name}
+              price={item.price}
+              img={item.img}
+              clickToCart={(obj) => {
+                onAddToCart(obj);
               }}
               clickFavourite={() => {
                 console.log("Элемент добавили в избранное");

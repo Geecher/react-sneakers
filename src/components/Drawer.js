@@ -1,51 +1,40 @@
-function Drawer() {
+function Drawer({closeCart, items = []}) {
+  
+
+
   return (
-    <div style={{ display: "none" }} className="overlay">
+    <div className="overlay">
       <div className="drawer">
         <h2 className="mb-30">
           Корзина
-          <button className="removeBtn">
+          <button className="removeBtn" onClick={closeCart}>
             <img width={11} height={11} src="/img/btn-remove.svg" alt="Plus" />
           </button>
         </h2>
 
         <div className="items mb-40">
-          <div className="cartItem mb-20">
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/001.jpg)" }}
-              className="cartItemImg"
-            ></div>
-            <div className="mr-20">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <button className="removeBtn">
-              <img
-                width={11}
-                height={11}
-                src="/img/btn-remove.svg"
-                alt="Plus"
-              />
-            </button>
-          </div>
-          <div className="cartItem mb-20">
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/001.jpg)" }}
-              className="cartItemImg"
-            ></div>
-            <div className="mr-20">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <button className="removeBtn">
-              <img
-                width={11}
-                height={11}
-                src="/img/btn-remove.svg"
-                alt="Plus"
-              />
-            </button>
-          </div>
+          { 
+            items.map((item) => (
+              <div className="cartItem mb-20">
+                <div
+                  style={{ backgroundImage: `url(${item.img})` }}
+                  className="cartItemImg"
+                ></div>
+                <div className="mr-20">
+                  <p className="mb-5">{item.name}</p>
+                  <b>{item.price} руб.</b>
+                </div>
+                <button className="removeBtn">
+                  <img
+                    width={11}
+                    height={11}
+                    src="/img/btn-remove.svg"
+                    alt="Plus"
+                  />
+                </button>
+              </div>
+            ))
+          }
         </div>
 
         <div className="cartTotalBlock">
