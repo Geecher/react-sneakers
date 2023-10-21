@@ -14,7 +14,6 @@ body {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .wrapper {
@@ -79,6 +78,42 @@ header {
         justify-content: space-between;
         margin: 0;
     }
+
+    .cartEmpty {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        position: relative;
+        background: #9DD558;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 18px;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: all .3s;
+        &:hover {
+            background: #8ac542;
+            &::after {
+                left: 30px;
+            }
+        }
+        &::after {
+            content: url('../public/img/cartTotalArrow.svg');
+            position: absolute;
+            transform: rotate(180deg);
+            top: 33%;
+            left: 35px;
+            transition: all .3s;
+        }
+    }
+    }
 }
 
 .content {
@@ -90,6 +125,15 @@ header {
         padding: 15px 18px;
         display: flex;
         align-items: center;
+        position: relative;
+
+        .clear {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          width: 14px;
+          transform: translate(0, -50%);
+        }
         
         input {
             border: none;
