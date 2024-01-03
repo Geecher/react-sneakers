@@ -7,26 +7,31 @@ import axios from "axios";
 function App() {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
-  // const [favorites, setFavorites] = React.useState([]);
+  const [favorites, setFavorites] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
-    axios.get("https://63b9cd7c56043ab3c78fa479.mockapi.io/items").then(res => {
+    axios.get("https://dab7a731c6a49aa0.mokky.dev/items").then(res => {
       setItems(res.data);
     });
-    axios.get("https://63b9cd7c56043ab3c78fa479.mockapi.io/cart").then(res => {
+    axios.get("https://dab7a731c6a49aa0.mokky.dev/cart").then(res => {
       setCartItems(res.data);
     });
   }, []);
 
+  const onAddToFavourite = (obj) => {
+    axios.post("https://dab7a731c6a49aa0.mokky.dev/favourite", obj);
+    setFavorites((prev) => [...prev, obj]);
+  };
+
   const onAddToCart = (obj) => {
-    axios.post("https://63b9cd7c56043ab3c78fa479.mockapi.io/cart", obj);
+    axios.post("https://dab7a731c6a49aa0.mokky.dev/cart", obj);
     setCartItems((prev) => [...prev, obj]);
   };
 
   const onRemoveItem = (id) => {
-    axios.delete(`https://63b9cd7c56043ab3c78fa479.mockapi.io/cart/${id}`);
+    axios.delete(`https://dab7a731c6a49aa0.mokky.dev/cart/${id}`);
     setCartItems((prev) => prev.filter(item => item.id !== id));
   }
 
@@ -45,7 +50,7 @@ function App() {
         <div className="d-flex align-center justify-between mb-30">
           <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : `Все кроссовки`}</h1>
           <div className="search-block">
-            {searchValue && <img className="clear cu-p" onClick={() => setSearchValue('')} src="/img/btn-remove.svg" alt="Clear"/>}
+            {searchValue && <img className="clear cu-p" onClick={() => setSearchValue('')} src="/img/btn-remove.svg" alt="Clear" />}
             <img className="mr-10" src="/img/search.svg" alt="Поиск" />
             <input onChange={onChangeSearchInput} value={searchValue} type="text" placeholder="Поиск..." />
           </div>
@@ -61,8 +66,7 @@ function App() {
                 onAddToCart(obj);
               }}
               clickFavourite={(obj) => {
-                console.log("Элемент добавили в избранное");
-                console.log(obj);
+                onAddToFavourite(obj);
               }}
             />
           ))}
