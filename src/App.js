@@ -1,8 +1,15 @@
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
-import Card from "./components/Card";
+import Home from './pages/Home'
+import Favorites from './pages/Favorites'
 import React from "react";
 import axios from "axios";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+
+
 
 function App() {
   const [items, setItems] = React.useState([]);
@@ -46,32 +53,18 @@ function App() {
       )}
       <Header onClickCart={() => setCartOpened(true)} />
 
-      <div className="content p-40">
-        <div className="d-flex align-center justify-between mb-30">
-          <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : `Все кроссовки`}</h1>
-          <div className="search-block">
-            {searchValue && <img className="clear cu-p" onClick={() => setSearchValue('')} src="/img/btn-remove.svg" alt="Clear" />}
-            <img className="mr-10" src="/img/search.svg" alt="Поиск" />
-            <input onChange={onChangeSearchInput} value={searchValue} type="text" placeholder="Поиск..." />
-          </div>
-        </div>
-        <div className="row">
-          {items.filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase())).map((item, key) => (
-            <Card
-              key={key}
-              name={item.name}
-              price={item.price}
-              img={item.img}
-              clickToCart={(obj) => {
-                onAddToCart(obj);
-              }}
-              clickFavourite={(obj) => {
-                onAddToFavourite(obj);
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      <Routes>
+        <Route index element={
+          <Home items={items}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            onChangeSearchInput={onChangeSearchInput}
+            onAddToFavourite={onAddToFavourite}
+            onAddToCart={onAddToCart} />
+        } />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
+
     </div>
   );
 }
