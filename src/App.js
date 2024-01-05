@@ -25,11 +25,28 @@ function App() {
     axios.get("https://dab7a731c6a49aa0.mokky.dev/cart").then(res => {
       setCartItems(res.data);
     });
+    axios.get("https://dab7a731c6a49aa0.mokky.dev/favourite").then(res => {
+      setFavorites(res.data);
+    });
   }, []);
 
-  const onAddToFavourite = (obj) => {
-    axios.post("https://dab7a731c6a49aa0.mokky.dev/favourite", obj);
-    setFavorites((prev) => [...prev, obj]);
+  const onAddToFavourite = async (obj) => {
+    try {
+      // favorites.find((favObj) => {
+      //   console.log(favObj);
+      //   console.log(obj);
+      //   console.log(favObj.id === obj.id);
+      // });
+      if (favorites.find(favObj => favObj.id === obj.id)) {
+        axios.delete(`https://dab7a731c6a49aa0.mokky.dev/favourite/${obj.id}`);
+        setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
+      } else {
+        const {data} = await axios.post("https://dab7a731c6a49aa0.mokky.dev/favourite", obj);
+        setFavorites((prev) => [...prev, data]);
+      }
+    } catch (error) {
+      alert('Не удалось добавить в избранное')
+    }
   };
 
   const onAddToCart = (obj) => {
@@ -62,9 +79,8 @@ function App() {
             onAddToFavourite={onAddToFavourite}
             onAddToCart={onAddToCart} />
         } />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites items={favorites} onAddToFavourite={onAddToFavourite}/>} />
       </Routes>
-
     </div>
   );
 }

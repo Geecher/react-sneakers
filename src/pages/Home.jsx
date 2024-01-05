@@ -20,10 +20,8 @@ function Home({
             <div className="row">
                 {items.filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase())).map((item, key) => (
                     <Card
+                        {...item}
                         key={key}
-                        name={item.name}
-                        price={item.price}
-                        img={item.img}
                         clickToCart={(obj) => {
                             onAddToCart(obj);
                         }}
