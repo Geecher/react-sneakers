@@ -23,6 +23,7 @@ function Home({
                         {...item}
                         key={key}
                         clickToCart={(obj) => {
+                            console.log(obj);
                             onAddToCart(obj);
                         }}
                         clickFavourite={(obj) => {

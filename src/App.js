@@ -32,26 +32,30 @@ function App() {
 
   const onAddToFavourite = async (obj) => {
     try {
-      // favorites.find((favObj) => {
-      //   console.log(favObj);
-      //   console.log(obj);
-      //   console.log(favObj.id === obj.id);
-      // });
       if (favorites.find(favObj => favObj.id === obj.id)) {
-        axios.delete(`https://dab7a731c6a49aa0.mokky.dev/favourite/${obj.id}`);
+        await axios.delete(`https://dab7a731c6a49aa0.mokky.dev/favourite/${obj.id}`);
         setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
       } else {
         const {data} = await axios.post("https://dab7a731c6a49aa0.mokky.dev/favourite", obj);
         setFavorites((prev) => [...prev, data]);
       }
     } catch (error) {
-      alert('Не удалось добавить в избранное')
+      alert('Не удалось добавить в избранное');
     }
   };
 
-  const onAddToCart = (obj) => {
-    axios.post("https://dab7a731c6a49aa0.mokky.dev/cart", obj);
-    setCartItems((prev) => [...prev, obj]);
+  const onAddToCart = async (obj) => {
+    try {
+      if (cartItems.find(item => item.id === obj.id)) {
+        await axios.delete(`https://dab7a731c6a49aa0.mokky.dev/cart/${obj.id}`);
+        setCartItems(prev => prev.filter((item) => item.id !== obj.id));
+      } else {
+        const {data} = await axios.post("https://dab7a731c6a49aa0.mokky.dev/cart", obj);
+        setCartItems((prev) => [...prev, data]);
+      }
+    } catch (error) {
+      alert('не удалось добавить товар в корзину');
+    }
   };
 
   const onRemoveItem = (id) => {
